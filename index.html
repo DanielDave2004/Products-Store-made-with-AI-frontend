@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Products Store</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="brand">
+                <div class="brand-dot"></div>
+                <h1>Products Store</h1>
+            </div>
+            <span id="totalCount" class="total-badge">0 items</span>
+        </div>
+    </header>
+
+    <div id="container">
+
+        <!-- SIDEBAR -->
+        <aside id="sidebar">
+
+            <!-- TABS -->
+            <div class="tabs">
+                <button class="tab active" data-mode="add">Add</button>
+                <button class="tab" data-mode="search">Search</button>
+                <button class="tab" data-mode="update">Update</button>
+                <button class="tab" data-mode="delete">Delete</button>
+            </div>
+
+            <!-- ADD PANEL -->
+            <div class="panel" id="panel-add">
+                <p class="panel-title">New Product</p>
+
+                <div class="field">
+                    <label>Item Name</label>
+                    <input type="text" id="itemName" placeholder="e.g. Widget X">
+                </div>
+                <div class="field">
+                    <label>Unit Price</label>
+                    <input type="number" id="unitPrice" step="0.01" placeholder="0.00">
+                </div>
+                <div class="field">
+                    <label>Quantity</label>
+                    <input type="number" id="quantity" placeholder="0">
+                </div>
+                <div class="field">
+                    <label>Supplier</label>
+                    <input type="text" id="supplier" placeholder="Supplier name">
+                </div>
+
+                <button id="add" class="btn btn-primary">+ Add Product</button>
+            </div>
+
+            <!-- SEARCH PANEL -->
+            <div class="panel hidden" id="panel-search">
+                <p class="panel-title">Search Product</p>
+
+                <div class="field">
+                    <label>Item Name</label>
+                    <input type="text" id="searchInput" placeholder="Type to search...">
+                </div>
+                <button id="searchBtn" class="btn btn-info">Search</button>
+                <button id="clearSearch" class="btn btn-ghost">Clear / Show All</button>
+            </div>
+
+            <!-- UPDATE PANEL -->
+            <div class="panel hidden" id="panel-update">
+                <p class="panel-title">Update Product</p>
+
+                <div class="field">
+                    <label>Item Name (target)</label>
+                    <input type="text" id="updateName" placeholder="Exact item name">
+                </div>
+                <div class="field">
+                    <label>New Unit Price</label>
+                    <input type="number" id="updatePrice" step="0.01" placeholder="0.00">
+                </div>
+                <div class="field">
+                    <label>New Quantity</label>
+                    <input type="number" id="updateQty" placeholder="0">
+                </div>
+                <div class="field">
+                    <label>New Supplier</label>
+                    <input type="text" id="updateSupplier" placeholder="Supplier name">
+                </div>
+                <button id="updateBtn" class="btn btn-warning">Update Product</button>
+            </div>
+
+            <!-- DELETE PANEL -->
+            <div class="panel hidden" id="panel-delete">
+                <p class="panel-title">Delete Product</p>
+
+                <div class="field">
+                    <label>Item Name</label>
+                    <input type="text" id="deleteName" placeholder="Exact item name">
+                </div>
+                <button id="deleteBtn" class="btn btn-danger">Delete Product</button>
+            </div>
+
+        </aside>
+
+        <!-- MAIN TABLE -->
+        <main id="tablePanel">
+
+            <div class="table-topbar">
+                <span class="table-label">All Products</span>
+                <span id="itemCount" class="item-count">0 items</span>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Supplier</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+        </main>
+
+    </div>
+
+    <div id="toast"></div>
+
+    <!-- CONTEXT MENU -->
+    <div id="contextMenu">
+        <div class="ctx-header" id="ctxTitle">Item Name</div>
+        <button class="ctx-item ctx-update" id="ctxUpdate"><span class="ctx-icon">✏️</span> Update</button>
+        <button class="ctx-item ctx-delete" id="ctxDelete"><span class="ctx-icon">🗑️</span> Delete</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

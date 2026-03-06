@@ -24,7 +24,7 @@ submit.addEventListener('click', () => {
     let sp     = document.querySelector("#supplier").value;
     let formData = { iName, uPrice, qt, sp };
 
-    fetch("https://products-store-made-with-ai-backend.onrender.com/api/products", {
+    fetch("http://localhost:1234/api/products", {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {
@@ -49,7 +49,7 @@ window.addEventListener('load', () => {
 
 // GET API — Display all products
 function getUsers() {
-    fetch('https://products-store-made-with-ai-backend.onrender.com/api/products', { mode: 'cors' })
+    fetch('http://localhost:1234/api/products', { mode: 'cors' })
         .then(response => {
             return response.json();
         })
@@ -136,7 +136,7 @@ document.querySelector("#clearSearch").addEventListener('click', () => {
 // FIX: changed from PUT /api/products/:name  →  PUT /api/products
 // because the controller reads from req.body, not req.params
 function updateProduct(originalName, iName, uPrice, qt, sp) {
-    fetch("https://products-store-made-with-ai-backend.onrender.com/api/products", {
+    fetch("http://localhost:1234/api/products", {
         method: 'PUT',
         body: JSON.stringify({ iName: originalName, uPrice, qt, sp }),
         headers: { "Content-Type": "application/json" },
@@ -234,7 +234,7 @@ ctxDelete.addEventListener('click', () => {
 
 // ── DELETE HELPER ──
 function deleteProduct(iName) {
-    fetch("https://products-store-made-with-ai-backend.onrender.com/api/products", {
+    fetch("http://localhost:1234/api/products", {
         method: 'DELETE',
         body: JSON.stringify({ id: iName }),
         headers: { "Content-Type": "application/json" },
@@ -256,5 +256,4 @@ function showToast(msg, type = 'info') {
     toast.textContent = msg;
     toast.className = `show toast-${type}`;
     setTimeout(() => { toast.className = ''; }, 3000);
-
 }
